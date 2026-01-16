@@ -162,7 +162,7 @@ export default function Home() {
             <footer className="w-full max-w-4xl animate-fade-in-up animate-delay-400">
                 <div className="bg-white/60 backdrop-blur-sm rounded-2xl shadow-md p-6 text-center">
                     <a
-                        href="https://www.canva.com/design/DAG7mNgWuVo/zeHJV8U2i8Qcd_InCC21xQ/view?utm_content=DAG7mNgWuVo&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h9a5468a0d1"
+                        href="https://portfolio-two-sepia-33.vercel.app/"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-lg font-semibold text-primary-dark hover:text-primary-blue hover:underline transition-colors"
