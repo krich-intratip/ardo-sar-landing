@@ -1,8 +1,12 @@
 'use client';
 
+import { useState } from 'react';
 import { FileSearch, CheckCircle2, ExternalLink } from 'lucide-react';
+import QRCodeModal from './components/QRCodeModal';
 
 export default function Home() {
+    const [isQRModalOpen, setIsQRModalOpen] = useState(false);
+
     return (
         <div className="min-h-screen flex flex-col items-center justify-center px-4 py-8">
             {/* Header Section */}
@@ -32,10 +36,10 @@ export default function Home() {
                             </p>
                             <div className="mt-3 flex flex-wrap justify-center gap-3 text-xs font-medium">
                                 <span className="bg-pastel-blue px-3 py-1 rounded-full text-primary-blue shadow-sm">
-                                    v1.0.0
+                                    v1.1.0
                                 </span>
                                 <span className="bg-pastel-green px-3 py-1 rounded-full text-green-700 shadow-sm">
-                                    📅 14 มกราคม 2569
+                                    📅 16 มกราคม 2569
                                 </span>
                             </div>
                         </div>
@@ -123,6 +127,37 @@ export default function Home() {
                 </a>
             </main>
 
+            {/* Donation Support Section */}
+            <section className="w-full max-w-4xl mb-8 animate-fade-in-up animate-delay-300">
+                <div className="bg-gradient-to-r from-amber-50 via-orange-50 to-yellow-50 backdrop-blur-sm rounded-3xl shadow-lg p-6 md:p-8">
+                    <div className="flex flex-col md:flex-row items-center justify-center gap-6">
+                        <div className="text-center md:text-left">
+                            <h3 className="text-lg font-semibold text-gray-800 mb-2 flex items-center justify-center md:justify-start gap-2">
+                                <span>☕</span> สนับสนุนผู้พัฒนา
+                            </h3>
+                            <p className="text-gray-600 text-sm">
+                                สนับสนุนช่วยค่าเช่า Server ของ Web app นี้<br />
+                                เพื่อให้สามารถบริการได้ต่อไป
+                            </p>
+                        </div>
+                        <button
+                            onClick={() => setIsQRModalOpen(true)}
+                            className="w-32 h-32 rounded-xl overflow-hidden shadow-lg border-4 border-white bg-white p-2 flex-shrink-0 cursor-pointer hover:scale-105 hover:shadow-xl transition-all duration-200 group relative"
+                            title="คลิกเพื่อดูรูปขนาดใหญ่"
+                        >
+                            <img
+                                src="/donation-qr.jpg"
+                                alt="QR Code สำหรับบริจาค"
+                                className="w-full h-full object-contain rounded-lg"
+                            />
+                            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors rounded-xl flex items-center justify-center">
+                                <span className="opacity-0 group-hover:opacity-100 transition-opacity text-white text-xs font-medium bg-black/50 px-2 py-1 rounded">🔍 ดูใหญ่</span>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
             {/* Footer */}
             <footer className="w-full max-w-4xl animate-fade-in-up animate-delay-400">
                 <div className="bg-white/60 backdrop-blur-sm rounded-2xl shadow-md p-6 text-center">
@@ -142,6 +177,16 @@ export default function Home() {
                     </p>
                 </div>
             </footer>
+
+            {/* QR Code Modal */}
+            <QRCodeModal
+                isOpen={isQRModalOpen}
+                onClose={() => setIsQRModalOpen(false)}
+                imageSrc="/donation-qr.jpg"
+                imageAlt="QR Code สำหรับบริจาค"
+                downloadFileName="donation-qr-ardo-sar.jpg"
+            />
         </div>
     );
 }
+
